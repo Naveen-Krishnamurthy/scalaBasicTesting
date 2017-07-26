@@ -43,7 +43,33 @@ object FileMatching {
 
   def spiltCurriedFnValue(x:Int) = (y : Int) => x+y // If we call this method it will return the function value later it can be used to add the values x & y
 
+  //Writing new control abstraction
 
+  def twice(op :Double => Double , x : Double) = op(x)
+
+//Method without using without by name parameters
+
+  val abstractVariable = true
+
+  def checkAbstract(predict :()=> Boolean) ={
+    if(abstractVariable && !predict()) {
+      println("False") ; throw new AssertionError("AssertionException thrown")
+    }
+  }
+
+  //Concise way to define empty functional literals using by-name parameter
+
+  def checkAbstract2(predict : => Boolean) = {
+    if(abstractVariable && !predict) {
+      println("False2") ; throw new AssertionError("AssertionException thrown")
+    }
+  }
+
+  def checkAbstract3(predict : Boolean) = {
+    if(abstractVariable && !predict) {
+      println("False3") ; throw new AssertionError("AssertionException thrown")
+    }
+  }
 
 }
 
@@ -67,6 +93,12 @@ object testFileMatching  {
     println("Adding the curried values using function values :"+first(3))
     val curriedFirst = FileMatching.curriedFunction(17)_
     println("Adding the curried values based on partial applied functions:"+curriedFirst(10))
-
+    println()
+    println("Testing the new Control abstraction")
+    println("Calling op function value for 1 time : "+FileMatching.twice(_ + 1,5))
+    //Method to check the by-name parameters
+    var testAbstract = FileMatching.checkAbstract(()=>5>3)
+    testAbstract = FileMatching.checkAbstract2(5>3) // using by-name parameter
+    testAbstract = FileMatching.checkAbstract3(10<8)
   }
 }
