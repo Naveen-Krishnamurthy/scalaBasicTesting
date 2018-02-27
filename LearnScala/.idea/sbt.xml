@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaSbtSettings">
+    <option name="customLauncherEnabled" value="true" />
+    <option name="customLauncherPath" value="$PROJECT_DIR$/../cadc/sbt-launch.jar" />
+    <option name="maximumHeapSize" value="1536" />
+    <option name="vmParameters" value="-Dhttp.proxyHost=www-gdcw.sony.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=www-gdcw.sony.com -Dhttps.proxyPort=80" />
+  </component>
+</project>
